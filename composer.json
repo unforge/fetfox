@@ -1,0 +1,36 @@
+{
+  "name": "fetfox/example",
+  "description": "Fetfox Example",
+  "license": "proprietary",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "FE\\": "src"
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "ext-curl": "*",
+    "ext-iconv": "*",
+    "ext-intl": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-mysqli": "*",
+    "ext-pcntl": "*",
+    "ext-posix": "*",
+    "ext-redis": "*",
+    "ext-simplexml": "*",
+    "ext-xmlreader": "*",
+    "chillerlan/php-database": "^1.0",
+    "fenom/fenom": "^2.12",
+    "guzzlehttp/guzzle": "^6.5",
+    "monolog/monolog": "^2.1",
+    "smarty/smarty": "^4.3",
+    "symfony/console": "^6.3",
+    "symfony/process": "^6.3"
+  }
+}
