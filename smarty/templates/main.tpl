@@ -10,7 +10,7 @@
     <div class="pagination">
         <a href="/?p=0">Первая страница</a>
         <a href="/?p={if $current_page <= 1}0{else}{$current_page-1}{/if}">&laquo;</a>
-        <a {if $total / $per_page < $current_page}href="/?p={$current_page+1}{/if}">&raquo;</a>
+        <a {if $total / $per_page > $current_page}href="/?p={$current_page+1}{/if}">&raquo;</a>
         <a href="/?p={$total / $per_page}">Последняя страница</a>
     </div>
 
