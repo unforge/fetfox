@@ -26,8 +26,10 @@ class UserService
             ->setTimezone(json_encode($item['location']['timezone'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
             ->setDob(date('Y-m-d H:i:s', strtotime($item['dob']['date'])))
             ->setRegistered(date('Y-m-d H:i:s', strtotime($item['registered']['date'])))
+            // fixme - setCountry - but puts the city
             ->setCountry($item['location']['city'])
             ->setState($item['location']['state'])
+            // fixme - setCity - but puts the country!
             ->setCity($item['location']['country'])
             ->setUuid($item['login']['uuid'])
             ->setUsername($item['login']['username'])
@@ -96,6 +98,8 @@ class UserService
             );
             Db::getDb()->raw($query);
 
+
+            // fixme - the purpose of links table is not clear
             $query = sprintf(
                 "INSERT INTO links (last_crc, city_id, items) VALUES (%d, %d, 1)  ON DUPLICATE KEY UPDATE items = items +1",
                 crc32($user->getLast()),
@@ -119,6 +123,9 @@ class UserService
 
     public static function getUserList(int $start, int $offset): array
     {
+        // fixme - the goal of the task is not reached: amount of relatives is incorrect
+        // and is counted in a suboptimal way.
+        // recommendation to use an aggregation to count people
         $query = sprintf(
             "SELECT u.*, c.country, c.state, c.city, l.items 
                 FROM users u
